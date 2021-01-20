@@ -1,27 +1,37 @@
 # Setup scripts
 
-Clone into your AWS instance
+## Using a DLAMI
+### Setup vscode in desktop
+1. Save any downloaded keys to `~/.ssh/config`
+2. In vscode, with the Remote: SSH installed, go `> Remote-SSH: Add New SSH Host...`
+```
+ssh -i  ~/.ssh/sdp-1.pem ubuntu@sdp-1.ubc-hpc.cloud
+```
+3. In vscode, with the Remote: SSH installed, go `> Remote-SSH: Connect to Host`
+    - It sometimes takes a few retries/etc.
+4. Choose Open Folder `/home/ubuntu`, etc.
+    - If conda wasn't directly, you could edit the `.bashrc` to add to the end
+```
+export PATH=~/anaconda3/bin:$PATH
+```
+5. In vscode extensions, install the `Python` extension, as well as the Pylance, and ellicode
 ## Pytorch + Lightning on AWS
+
 1. Download these scripts
 ```bash
 git clone https://github.com/ubcecon/setup_scripts.git
 ```
-    - For conda, choose `Yes` to init
-2. Run the script
+2. If using an AMI with conda/etc. already installed, then 
 ```bash
-bash ./setup_scripts/
+pip install -r ./setup_scripts/pytorch_requirements.txt
+```
 
-### Setup vscode in desktop
-1. Save any downloaded keys to `~/.ssh/config`
-2. In `` create a new file (or modify) to add:
+### Bucket
+If you have access to a bucket for the instance, then find its key id, secret access key, and region name (e.g. https://blog.ronin.cloud/linux-object-storage/) and
+```bash
+aws configure
 ```
-Host MYMACHINENAME
-      User ubuntu
-      Hostname MYMACHINENAME.ubc-hpc.cloud
-      IdentityFile ~/.ssh/MYKEY.pem
-```
-3. In vscode, with the Remote: SSH installed, go `> Remote-SSH: Connect to Host`
-4. Open a Folder as `/home/ubuntu`, etc. and edit the `.bashrc` to add to the end
-```
-export PATH=~/anaconda3/bin:$PATH
+After that, you can use the CLI such as
+```bash
+aws s3 ls MYBUCKETNAME.store.ubc-hpc.cloud
 ```
