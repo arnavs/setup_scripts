@@ -5,10 +5,11 @@
 1. Save any downloaded keys to `~/.ssh/config`
 2. In vscode, with the Remote: SSH installed, go `> Remote-SSH: Add New SSH Host...`
 ```
-ssh -i  ~/.ssh/sdp-1.pem ubuntu@sdp-1.ubc-hpc.cloud
+ssh -i  ~/.ssh/MYKEY.pem ubuntu@MYCOMPUTER.ubc-hpc.cloud
 ```
 3. In vscode, with the Remote: SSH installed, go `> Remote-SSH: Connect to Host`
     - It sometimes takes a few retries/etc.
+    - Choose linux and take the default choices
 4. Choose Open Folder `/home/ubuntu`, etc.
     - If conda wasn't directly, you could edit the `.bashrc` to add to the end
 ```
