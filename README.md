@@ -31,7 +31,11 @@ If you have access to a bucket for the instance, then find its key id, secret ac
 ```bash
 aws configure
 ```
-After that, you can use the CLI such as
+After that, you can use the CLI to access the buckets
 ```bash
 aws s3 ls MYBUCKETNAME.store.ubc-hpc.cloud
+```
+or
+```bash
+aws s3 cp TESTFILE.txt s3://MYBUCKETNAME.store.ubc-hpc.cloud
 ```
